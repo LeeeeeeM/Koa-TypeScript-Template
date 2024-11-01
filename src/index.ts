@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 import * as Koa from 'koa'
+import * as cors from 'koa2-cors'
 import { koaBody } from 'koa-body'
 import * as serve from 'koa-static'
 import * as mount from 'koa-mount'
@@ -19,6 +20,8 @@ const app: Koa = new Koa()
 
 app.keys = ['session base secret']
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+app.use(cors())
 app.use(koaBody())
 app.use(KoaParameter(app) as Koa.Middleware)
 app.use(KoaSession(SESSION_CONFIG, app))

@@ -10,6 +10,13 @@ export class ActiveRecordController {
     return data
   }
 
+  @Post('/list1')
+  async list1 (@Body() body: any): Promise<any> {
+    console.log(body, '请求的query参数')
+    const data = await activeRecord.find()
+    return data
+  }
+
   @Post('/post')
   async post (@Body() body: any): Promise<any> {
     console.log(body, '请求的body参数')
